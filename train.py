@@ -113,9 +113,9 @@ def make_dataloaders(cfg, distributed, img_ext='_0000.nii.gz', mask_ext='.png'):
         train_ids, val_ids = sp[0]["train"], sp[0]["val"]
 
     train_tf = A.Compose([
+        A.Resize(cfg['input_h'], cfg['input_w']),
         A.RandomRotate90(),
         A.HorizontalFlip(),
-        A.Resize(cfg['input_h'], cfg['input_w']),
         A.Normalize(),
     ])
     val_tf = A.Compose([
