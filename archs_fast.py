@@ -11,7 +11,7 @@ import torch.nn.functional as F
 import os
 import matplotlib.pyplot as plt
 from utils import *
-from fast_kan import FastKANLayer
+from kan.fast_kan import FastKANLayer
 import timm
 from timm.models.layers import DropPath, to_2tuple, trunc_normal_
 import types
@@ -128,6 +128,8 @@ class KANLayer(nn.Module):
         self.apply(self._init_weights)
 
     def _init_weights(self, m):
+        if isinstance(m, SplineLinear):
+            pass
         if isinstance(m, nn.Linear):
             trunc_normal_(m.weight, std=.02)
             if isinstance(m, nn.Linear) and m.bias is not None:
@@ -176,6 +178,8 @@ class KANBlock(nn.Module):
         self.apply(self._init_weights)
 
     def _init_weights(self, m):
+        if isinstance(m, SplineLinear):
+            pass
         if isinstance(m, nn.Linear):
             trunc_normal_(m.weight, std=.02)
             if isinstance(m, nn.Linear) and m.bias is not None:
@@ -246,6 +250,8 @@ class PatchEmbed(nn.Module):
         self.apply(self._init_weights)
 
     def _init_weights(self, m):
+        if isinstance(m, SplineLinear):
+            pass
         if isinstance(m, nn.Linear):
             trunc_normal_(m.weight, std=.02)
             if isinstance(m, nn.Linear) and m.bias is not None:

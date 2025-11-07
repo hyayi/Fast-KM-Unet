@@ -20,7 +20,7 @@ from abc import ABCMeta, abstractmethod
 # from mmcv.cnn import ConvModule
 from pdb import set_trace as st
 
-from kan import KANLinear, KAN
+from kan.kan import KANLinear, KAN
 from torch.nn import init
 
 import time
