@@ -11,7 +11,7 @@ import torch.nn.functional as F
 import os
 import matplotlib.pyplot as plt
 from utils import *
-from kan.fast_kan import FastKANLayer
+from kan.fast_kan import FastKANLayer, SplineLinear
 import timm
 from timm.models.layers import DropPath, to_2tuple, trunc_normal_
 import types
@@ -19,8 +19,6 @@ import math
 from abc import ABCMeta, abstractmethod
 # from mmcv.cnn import ConvModule
 from pdb import set_trace as st
-
-from kan import KANLinear, KAN
 from torch.nn import init
 
 import time
